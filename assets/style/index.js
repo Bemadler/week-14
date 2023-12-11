@@ -71,10 +71,7 @@ console.log(`Числовая оценка: ${numericGrade}, Буквенная 
 //код выводящий результаты ( не смогла остановить генерацию новых ответов при повторном клике)
 function showResults() {
     const studentsList = document.getElementById('students');
-    const infoParagraph = document.getElementById('info');
     const resultParagraph = document.getElementById('result');
-
-    const passingGrade = 60;
     let resultList = [];
 
     for (let i = 0; i < studentsList.children.length; i++) {
@@ -95,7 +92,7 @@ document.querySelector('.results').addEventListener('click', function () {
     for (let i = 0; i < studentsList.children.length; i++) {
 
         const studentName = studentsList.children[i].textContent.trim();
-        const numericGrade = grades.push(Math.floor(Math.random()*100) +1);
+        const numericGrade = grades.push(Math.floor(Math.random()*100) +1);//Переменная numericGrade инициализирована как строка ('95'), в то время как функция convertToLetterGrade ожидает числовой аргумент. Хотя JavaScript автоматически преобразует строку в число в большинстве случаев, лучше явно передавать числовое значение для избежания ошибок.
         const letterGrade = convertToLetterGrade(numericGrade);
         const resultString = `${studentName}: Числовая оценка - ${numericGrade}, Буквенная оценка - ${letterGrade}`;
         
@@ -103,3 +100,4 @@ document.querySelector('.results').addEventListener('click', function () {
         resultParagraph.innerHTML += `<p>${resultString}</p>`;
     }
 });
+//В обработчике событий клика ты заново генерируешь оценки, что приводит к непостоянным результатам. Вместо этого, тебе следует использовать уже существующий массив grades.

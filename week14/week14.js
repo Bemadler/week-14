@@ -1,6 +1,6 @@
 //Задание 1
 //Создайте массив myFirstArray содержащий строки, числа, булевы значения. Выведите его в консоль.
-const myFirstArray = ['Бермет','17','true']; // объявите переменную здесь
+const myFirstArray = ['Бермет','17',true]; // объявите переменную здесь
 console.log(myFirstArray);
 
 //Задание 2
@@ -14,10 +14,7 @@ console.log(myInformation.join(' '));
 //Задание 4
 //Добавьте в массив countries значения 'Italy' с индексом 5, 'Spain' с индексом 6 и 'France' с индексом 7. Добавление элементов произведите с помощью метода push().
 let countries = ['Austria', 'Belgium', 'Netherlands', 'Czechia', 'Croatia'];
-countries[5] = 'Italy';
-countries[6] = 'Spain';
-//(или можно было вот так? countries.push('Italy', 'Spain', 'France');)
-countries[7] = 'France';
+countries.push('Italy', 'Spain', 'France');
 console.log(countries);
 
 
@@ -67,7 +64,8 @@ console.log(filterEvenNumbers(numbers));
 //Задание 12
 //Напишите функцию sortAndPrint, которая принимает копию массива randomNumbers с помощью оператора spread и сортирует его в порядке возрастания с использованием метода sort(). Затем выведите отсортированный массив чисел в консоль.
 let randomNumbers = [72, 45, 19, 84, 37, 56, 91, 23, 68, 10, 98, 32];
-randomNumbers.sort(function (a, b){
+let sortAndPrint = [...randomNumbers];
+sortAndPrint.sort(function (a, b){
     return a - b ;
 });
-console.log(randomNumbers);
+console.log(sortAndPrint);
